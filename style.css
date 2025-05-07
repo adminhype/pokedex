@@ -11,6 +11,13 @@ header {
         height: 64px;
     }
 }
+footer {
+    color: white;
+    img {
+        width: 100px;
+        height: 100px;
+    }
+}
 .heroText {
     background-color: #50bab6;
     font-size: 18px;

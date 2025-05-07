@@ -5,6 +5,12 @@ body {
     line-height: 1.6;
     min-height: 100vh;
 }
+header {
+    .logo img {
+        width: 64px;
+        height: 64px;
+    }
+}
 .heroText {
     background-color: #50bab6;
     font-size: 18px;

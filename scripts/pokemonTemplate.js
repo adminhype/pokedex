@@ -1,6 +1,6 @@
-function renderPokemonCard(id, name, image, type1, type2) {
+function renderPokemonCards(id, name, image, type1, type2) {
     return /*html*/ `
-        <div class="pokemon-card bg-${type1}">
+        <div class="pokemon-card ${getBgClass(type1)}">
             <div class="card-header">
             <p class="pokemon-id">#${id}</p>
             <h2 class="pokemon-name">${name}</h2>

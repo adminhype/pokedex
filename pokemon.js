@@ -3,7 +3,7 @@ let offset = 0;
 
 
 async function loadPokemons() {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}');
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
     const data = await response.json();
     const allPokemons = data.results;
 
@@ -18,9 +18,12 @@ async function loadPokemons() {
         const type1 = data.types[0].type.name;
         const type2 = data.types[1] ? data.types[1].type.name : '';
 
-        const cardHTML = renderPokemonCard(id, name, image, type1, type2);
+        const cardHTML = renderPokemonCards(id, name, image, type1, type2);
         document.getElementById('content').innerHTML += cardHTML;
     }
 }
-
 loadPokemons();
+
+function getBgClass(type) {
+    return `bg-${type}`;
+}

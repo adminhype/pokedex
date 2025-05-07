@@ -1,16 +1,27 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 let offset = 0;
 
+function showLoadingOverlay() {
+    document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
+}
+
+function removeLoadingOverlay() {
+    document.getElementById('overlay-container').innerHTML = '';
+}
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 async function loadPokemons() {
-    const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
-    );
+    showLoadingOverlay();
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
     const data = await response.json();
-    const allPokemons = data.results;
-    await renderPokemonList(allPokemons);
+    await renderPokemonList(data.results);
     offset += 20;
+    await wait(1000);
+    removeLoadingOverlay();
     renderLoadButton();
 }
+
 
 async function renderPokemonList(pokemonList) {
     for (let i = 0; i < pokemonList.length; i++) {
@@ -56,4 +67,14 @@ function getBgClass(type) {
 }
 function getTypeClass(type) {
     return `type-${type}`;
+}
+
+function showLoadingOverlay() {
+    const container = document.getElementById('overlay-container');
+    container.innerHTML = renderLoadingOverlay();
+}
+
+function removeLoadingOverlay() {
+    const container = document.getElementById('overlay-container');
+    container.innerHTML = '';
 }

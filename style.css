@@ -23,3 +23,30 @@ footer {
     font-size: 18px;
     padding: 10px 20px;
 }
+.load-more-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.load-more-btns {
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #7e408c;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-overlay img {
+    width: 275px;
+    height: 275px;
+}

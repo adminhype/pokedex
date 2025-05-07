@@ -17,7 +17,14 @@ function renderPokemonCards(id, name, image, type, buttonHTML) {
 function renderLoadMoreButton() {
     return /*html*/ `
         <div class="load-more-wrapper">
-            <button id="load-more-btn" class="load-more-btn">Mehr laden</button>
+            <button id="load-more-btn" class="load-more-btns">Mehr anzeigen...</button>
+        </div>
+    `;
+}
+function renderLoadingOverlay() {
+    return `
+        <div class="loading-overlay">
+            <img src="./img/assets/duck.gif" alt="Loading..." />
         </div>
     `;
 }

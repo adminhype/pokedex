@@ -1,6 +1,6 @@
 function renderPokemonCards(id, name, image, type1, type2) {
     return /*html*/ `
-        <div class="pokemon-card">
+        <div class="pokemon-card hover-shadow-${type1}">
             <div class="pokemon-img-wrapper">
                 <span class="pokemon-id">#${id}</span>
                 <img class="pokemon-img" src="${image}" alt="${name}">

@@ -1,17 +1,30 @@
 .pokemon-card {
     width: 180px;
-    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 1rem;
     background-color: #e2f7f7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: scale(0.98);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+            &:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    }
 
     .pokemon-id {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-size: 0.75rem;
+        color: #555;
         font-weight: bold;
-        font-size: 1.2rem;
-        color: #333;
-        display: flex;
-        justify-content: start;
     }
 
     .pokemon-name {
@@ -59,15 +72,6 @@
     padding: 12px 0;
 }
 
-.pokemon-id {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    font-size: 0.75rem;
-    color: #555;
-    font-weight: bold;
-}
-
 .bg-grass {
     background-color: #78c850;
 }
@@ -86,9 +90,6 @@
 .bg-flying {
     background-color: #a890f0;
 }
-.bg-poison {
-    background-color: #a040a0;
-}
 .bg-ground {
     background-color: #e0c068;
 }
@@ -104,33 +105,40 @@
 .bg-steel {
     background-color: #b8b8d0;
 }
-.bg-fire {
-    background-color: #f08030;
+
+.hover-shadow-grass:hover {
+    box-shadow: 0 0 12px 4px #78c850;
 }
-.bg-water {
-    background-color: #6890f0;
+.hover-shadow-fire:hover {
+    box-shadow: 0 0 12px 4px #f08030;
 }
-.bg-grass {
-    background-color: #78c850;
+.hover-shadow-water:hover {
+    box-shadow: 0 0 12px 4px #6890f0;
 }
-.bg-electric {
-    background-color: #f8d030;
+.hover-shadow-poison:hover {
+    box-shadow: 0 0 12px 4px #a040a0;
 }
-.bg-psychic {
-    background-color: #f85888;
+.hover-shadow-fighting:hover {
+    box-shadow: 0 0 12px 4px #c03028;
 }
-.bg-ice {
-    background-color: #98d8d8;
+.hover-shadow-flying:hover {
+    box-shadow: 0 0 12px 4px #a890f0;
 }
-.bg-dragon {
-    background-color: #7038f8;
+.hover-shadow-ground:hover {
+    box-shadow: 0 0 12px 4px #e0c068;
 }
-.bg-dark {
-    background-color: #705848;
+.hover-shadow-rock:hover {
+    box-shadow: 0 0 12px 4px #b8a038;
 }
-.bg-fairy {
-    background-color: #ee99ac;
+.hover-shadow-bug:hover {
+    box-shadow: 0 0 12px 4px #a8b820;
 }
-.bg-normal {
-    background-color: #a8a878;
+.hover-shadow-ghost:hover {
+    box-shadow: 0 0 12px 4px #705898;
+}
+.hover-shadow-steel:hover {
+    box-shadow: 0 0 12px 4px #b8b8d0;
+}
+.hover-shadow-normal:hover {
+    box-shadow: 0 0 12px 4px #a8a878;
 }

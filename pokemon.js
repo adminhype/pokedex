@@ -22,18 +22,31 @@ async function renderPokemonList(pokemonList) {
 async function renderSinglePokemon(url) {
     const response = await fetch(url);
     const data = await response.json();
-
     const id = data.id;
     const name = data.name.toUpperCase();
     const image = data.sprites.other['official-artwork'].front_default;
     const type1 = data.types[0].type.name;
     const type2 = data.types[1] ? data.types[1].type.name : '';
 
-    const cardHTML = renderPokemonCards(id, name, image, type1, type2);
+    const bgClass = type1;
+    const buttonsHTML = createTypeButtons(type1, type2);
+
+    const cardHTML = renderPokemonCards(id, name, image, bgClass, buttonsHTML);
     document.getElementById('content').innerHTML += cardHTML;
+}
+
+function createTypeButtons(type1, type2) {
+    let html = `<button class="type-icon ${getTypeClass(type1)}">${type1}</button>`;
+    if (type2) {
+        html += `<button class="type-icon ${getTypeClass(type2)}">${type2}</button>`;
+    }
+    return html;
 }
 
 
 function getBgClass(type) {
     return `bg-${type}`;
+}
+function getTypeClass(type) {
+    return `type-${type}`;
 }

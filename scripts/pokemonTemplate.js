@@ -1,15 +1,14 @@
-function renderPokemonCards(id, name, image, type1, type2) {
+function renderPokemonCards(id, name, image, type, buttonHTML) {
     return /*html*/ `
-        <div class="pokemon-card hover-shadow-${type1}">
+        <div class="pokemon-card hover-shadow-${type}">
             <div class="pokemon-img-wrapper">
                 <span class="pokemon-id">#${id}</span>
                 <img class="pokemon-img" src="${image}" alt="${name}">
             </div>
-            <div class="card-bottom ${getBgClass(type1)}">
+            <div class="card-bottom bg-${type}">
                 <h2 class="pokemon-name">${name}</h2>
                 <div class="pokemon-types">
-                    <span class="type-icon type-${type1}">${type1}</span>
-                    <span class="type-icon type-${type2}">${type2}</span>
+                    ${buttonHTML}
                 </div>
             </div>
         </div>

@@ -14,3 +14,10 @@ function renderPokemonCards(id, name, image, type, buttonHTML) {
         </div>
     `;
 }
+function renderLoadMoreButton() {
+    return /*html*/ `
+        <div class="load-more-wrapper">
+            <button id="load-more-btn" class="load-more-btn">Mehr laden</button>
+        </div>
+    `;
+}

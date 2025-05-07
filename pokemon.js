@@ -5,14 +5,12 @@ async function loadPokemons() {
     const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
     );
-
     const data = await response.json();
     const allPokemons = data.results;
-
     await renderPokemonList(allPokemons);
+    offset += 20;
+    renderLoadButton();
 }
-
-loadPokemons();
 
 async function renderPokemonList(pokemonList) {
     for (let i = 0; i < pokemonList.length; i++) {
@@ -34,6 +32,17 @@ async function renderSinglePokemon(url) {
     const cardHTML = renderPokemonCards(id, name, image, bgClass, buttonsHTML);
     document.getElementById('content').innerHTML += cardHTML;
 }
+function renderLoadButton() {
+    const btnContainer = document.getElementById('load-button-container');
+    if (offset >= 100) {
+        btnContainer.innerHTML = '';
+        return;
+    }
+    btnContainer.innerHTML = renderLoadMoreButton();
+    const btn = document.getElementById('load-more-btn');
+    if (btn) btn.onclick = loadPokemons;
+}
+
 
 function createTypeButtons(type1, type2) {
     let html = `<button class="type-icon ${getTypeClass(type1)}">${type1}</button>`;
@@ -42,8 +51,6 @@ function createTypeButtons(type1, type2) {
     }
     return html;
 }
-
-
 function getBgClass(type) {
     return `bg-${type}`;
 }

@@ -21,14 +21,20 @@
         <link rel="stylesheet" href="styles/pokemonCard.css" />
         <link rel="stylesheet" href="./styles/pokemonColors.css" />
     </head>
-    <body>
+    <body onload="loadPokemons()">
         <header>
             <nav class="container">
                 <a class="logo">
                     <img src="./img/assets/logo/download.png" alt="Logo" />
                 </a>
                 <form>
-                    <input type="text" id="inputField" />
+                    <input
+                        type="text"
+                        id="inputField"
+                        placeholder="suchen.."
+                        required
+                        minlength="3"
+                    />
                 </form>
             </nav>
         </header>
@@ -37,6 +43,7 @@
         </div>
         <main>
             <section id="content" class="pokemon-grid"></section>
+            <div id="load-button-container"></div>
         </main>
 
         <footer class="container">

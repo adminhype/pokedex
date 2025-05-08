@@ -18,7 +18,7 @@ footer {
         height: 100px;
     }
 }
-.heroText {
+.hero-text {
     background-color: #50bab6;
     font-size: 18px;
     padding: 10px 20px;
@@ -49,4 +49,22 @@ footer {
 .loading-overlay img {
     width: 275px;
     height: 275px;
+}
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.overlay-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
 }

@@ -1,3 +1,4 @@
+/* Setzt Hintergrundfarbe basierend auf Typ (z. B. bg-fire) */
 .bg-grass {
     background-color: #78c850;
 }
@@ -52,6 +53,7 @@
 .bg-normal {
     background-color: #a8a878;
 }
+/* Leuchteffekt beim Hover je nach Typ */
 
 .hover-shadow-grass:hover {
     box-shadow: 0 0 12px 4px #78c850;
@@ -115,7 +117,7 @@
     border: 2px solid #5ea63e;
     color: #fff;
 }
-
+/* Button-Farbe + Rahmen + Textfarbe je nach Typ */
 .type-fire {
     background-color: #f08030;
     border: 2px solid #d2691e;

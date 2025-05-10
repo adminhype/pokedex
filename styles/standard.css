@@ -1,9 +1,11 @@
+/* Globales Reset: Margin, Padding, Box-Sizing, smooth scroll */
 * {
     scroll-behavior: smooth;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+/* Entfernt Unterstreichung bei Links */
 a {
     text-decoration: none;
 }

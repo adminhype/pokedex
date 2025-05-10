@@ -1,7 +1,7 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 
 let offset = 0; // API-Endpunkt zur Abfrage der Pokémon-Daten. Offset startet bei 0.
-
+const allPokemnos = [];
 function showLoadingOverlay() { // Zeigt das Lade-Overlay an, indem HTML-Inhalt in den Container geschrieben wird.
     document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
 }
@@ -68,7 +68,4 @@ function createTypeButtons(type1, type2) {
 // Liefert CSS-Klassenname für Typen-Styling (z. B. `type-water`)
 function getTypeClass(type) {
     return `type-${type}`;
-}
-async function openOverlay(id) {
-    const response = await fetch()
 }

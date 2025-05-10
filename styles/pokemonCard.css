@@ -1,3 +1,4 @@
+/* Einzelne Pokémon-Karte mit Hover-Effekt */
 .pokemon-card {
     width: 180px;
     text-align: center;
@@ -17,7 +18,7 @@
             }
         }
     }
-
+    /* Pokémon-ID oben rechts auf der Karte */
     .pokemon-id {
         position: absolute;
         top: 8px;
@@ -26,13 +27,13 @@
         color: #555;
         font-weight: bold;
     }
-
+    /* Name des Pokémon */
     .pokemon-name {
         font-size: 1.2rem;
         margin: 0.2rem 0;
         color: #222;
     }
-
+    /* Bild des Pokémon mit runden Ecken */
     .pokemon-img {
         width: 100%;
         height: auto;
@@ -40,13 +41,13 @@
         margin: 0.5rem 0;
         border-radius: 10px;
     }
-
+    /* Container für die Typen-Buttons */
     .pokemon-types {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 8px;
-
+        /* Style für jeden Typ-Button */
         .type-icon {
             text-transform: capitalize;
             font-weight: bold;
@@ -63,6 +64,7 @@
         }
     }
 }
+/* Grid-Layout für mehrere Pokémon-Karten */
 .pokemon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -70,6 +72,7 @@
     padding: 2rem;
     max-width: 100%;
 }
+/* Umgibt das Pokémon-Bild – für zentrierte Darstellung */
 .pokemon-img-wrapper {
     position: relative;
     background-color: white;

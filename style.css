@@ -1,3 +1,4 @@
+/* Grundlayout der Seite: Hintergrundfarbe, Schrift, Höhe */
 body {
     font-family: "Lato", sans-serif;
     background-color: #0f224a;
@@ -18,15 +19,18 @@ footer {
         height: 100px;
     }
 }
+/* Begrüßungsleiste unter dem Header */
 .hero-text {
     background-color: #50bab6;
     font-size: 18px;
     padding: 10px 20px;
 }
+/* Wrapper zum Zentrieren des "Mehr anzeigen"-Buttons */
 .load-more-wrapper {
     display: flex;
     justify-content: center;
 }
+/* Der Button selbst – mit Hover-Effekt */
 .load-more-btns {
     padding: 12px 20px;
     border-radius: 10px;
@@ -36,6 +40,7 @@ footer {
         transform: scale(1.1);
     }
 }
+/* Vollbild-Overlay mit Hintergrundfarbe für Ladescreen */
 .loading-overlay {
     position: fixed;
     inset: 0;
@@ -45,11 +50,12 @@ footer {
     justify-content: center;
     align-items: center;
 }
-
+/* Bild im Ladescreen (z. B. Ente) */
 .loading-overlay img {
     width: 275px;
     height: 275px;
 }
+/* Halbtransparentes Hintergrundoverlay */
 .overlay {
     position: fixed;
     inset: 0;
@@ -59,6 +65,7 @@ footer {
     align-items: center;
     z-index: 1000;
 }
+/* Weißer, zentrierter Inhalt im Overlay (Detailansicht) */
 .overlay-content {
     background-color: white;
     border-radius: 12px;

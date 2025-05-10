@@ -34,3 +34,32 @@ function renderLoadingOverlay() {
         </div>
     `;
 }
+// Die logik wird aus openOverlay übernommen um das overlay mit den selben inhalten wie die kleine Card anzeigen zulassen
+function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
+    // beim klicken auf die kleine card erscheint das passende pokemon mit der overlaycard 
+    return `
+        <div class="pokemon-card-overlay">
+            <div class="pokemon-img-wrapper-overlay">
+                <span class="pokemon-id">#${id}</span>
+                <img class="pokemon-img" src="${image}" alt="${name}">
+            </div>
+            <div class="card-bottom bg-${type}">
+                <h2 class="pokemon-name">${name}</h2>
+                <div class="pokemon-types">
+                    ${buttonHTML}
+                </div>
+            </div>
+        </div>`;
+}
+// Kompletter HTML-inhalt für das Overlay 
+function renderOverlayCard(id, name, image, type1, buttonHTML) {
+    return `
+        ${renderPokemonOverlayCard(id, name, image, type1, buttonHTML)}
+        <div class="overlay-tabs">
+            <button class="tab-btn">Main</button>
+            <button class="tab-btn">Stats</button>
+            <button class="tab-btn">Evo Chain</button>
+        </div>
+        <div class="tab-content-area"></div>
+    `;
+}

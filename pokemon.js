@@ -1,7 +1,7 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 
 let offset = 0; // API-Endpunkt zur Abfrage der Pokémon-Daten. Offset startet bei 0.
-const allPokemnos = [];
+let allPokemons = [];
 function showLoadingOverlay() { // Zeigt das Lade-Overlay an, indem HTML-Inhalt in den Container geschrieben wird.
     document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
 }
@@ -34,6 +34,7 @@ async function renderPokemonList(pokemonList) {
 async function renderSinglePokemon(url) {
     const response = await fetch(url); // Ruft die Detaildaten ab
     const data = await response.json(); // Umwandlung in JS-Objekt
+    allPokemons.push(data) // alle geladene Pokemon im globalen Pokemon Array speichern
     const id = data.id; // Pokémon-ID
     const name = data.name.toUpperCase(); // Name in Großbuchstaben (Designvorgabe)
     const image = data.sprites.other['official-artwork'].front_default;  // Offizielles Artwork
@@ -68,4 +69,28 @@ function createTypeButtons(type1, type2) {
 // Liefert CSS-Klassenname für Typen-Styling (z. B. `type-water`)
 function getTypeClass(type) {
     return `type-${type}`;
+}
+
+
+function openOverlay(id) { // overlay große ansicht für Pokemon Cards
+    // im globalen Array nach passender id suchen in pokemon speichern
+    const pokemon = allPokemons.find(data => data.id === id)
+    const name = pokemon.name.toUpperCase(); //Name in großbuchstaben
+    const image = pokemon.sprites.other['official-artwork'].front_default; //offzieles Artwork
+    const type1 = pokemon.types[0].type.name; // primärer typ
+    const type2 = pokemon.types[1] ? pokemon.types[1].type.name : ''; //Sekundärer Typ
+    const buttonHTML = createTypeButtons(type1, type2); //typ-buttons als HTML
+
+    const overlayHTML = renderOverlayCard(id, name, image, type1, buttonHTML); // karte bauen
+    document.getElementById('overlay-content').innerHTML = overlayHTML; // karte zum grid hinzufügen
+
+
+    // Overlay sichtbar machen die klasse d-none entfernen 
+    document.getElementById('overlay').classList.remove('d-none');
+
+}
+
+function closeOverlay() {
+    document.getElementById('overlay').classList.add('d-none');
+    document.getElementById('overlay-content').innerHTML = '';
 }

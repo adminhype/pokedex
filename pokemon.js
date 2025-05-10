@@ -89,7 +89,7 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
     document.getElementById('overlay').classList.remove('d-none');
 
 }
-
+// Overlay wieder schließbar 
 function closeOverlay() {
     document.getElementById('overlay').classList.add('d-none');
     document.getElementById('overlay-content').innerHTML = '';

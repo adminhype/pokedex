@@ -68,7 +68,7 @@ function renderOverlayCard(id, name, image, type1, buttonHTML) {
             <button class="tab-btn" onclick="handleTabClick(event, 'main', ${id})">Main</button>
             <button class="tab-btn" onclick="handleTabClick(event, 'stats', ${id})">Stats</button>
 
-            <button class="tab-btn" onclick="showTab('chain', ${id})">Evo Chain</button>
+            <button class="tab-btn"  onclick="handleTabClick(event, 'chain', ${id})">Evo Chain</button>
         </div>
         <div id="tab-content-areas" class="tab-content-area"></div>
     `;
@@ -97,23 +97,23 @@ function renderStatsTab(name, value) {
 }
 //#endregion
 //#region EvoChain-Tab_Template
-function renderEvoTab() {
+function renderEvoTab(stage1Name, stage1Img, stage2Name, stage2Img, stage3Name, stage3Img) {
     return `
     <div class="evo-chain-wrapper">
-    <div class="evo-stage">
-        <img src="{STAGE_1_IMAGE}" alt="{STAGE_1_NAME}" />
-        <span>{STAGE_1_NAME}</span>
-    </div>
-    <span class="arrow">→</span>
-    <div class="evo-stage">
-        <img src="{STAGE_2_IMAGE}" alt="{STAGE_2_NAME}" />
-        <span>{STAGE_2_NAME}</span>
-    </div>
-    <span class="arrow">→</span>
-    <div class="evo-stage">
-        <img src="{STAGE_3_IMAGE}" alt="{STAGE_3_NAME}" />
-        <span>{STAGE_3_NAME}</span>
-    </div>
+        <div class="evo-stage">
+            <img src="${stage1Img}" alt="${stage1Name}" />
+            <span>${stage1Name}</span>
+        </div>
+        <span class="arrow">→</span>
+        <div class="evo-stage">
+            <img src="${stage2Img}" alt="${stage2Name}" />
+            <span>${stage2Name}</span>
+        </div>
+        <span class="arrow">→</span>
+        <div class="evo-stage">
+            <img src="${stage3Img}" alt="${stage3Name}" />
+            <span>${stage3Name}</span>
+        </div>
     </div>
     `;
 }

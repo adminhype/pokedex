@@ -150,12 +150,42 @@ function handleStatsTab(pokemon) {
 }
 //#endregion
 //#region EvoChain-Tab
-function handleEvoTab() {
-    // also ich müsste ja eine neue url fetchen aus der api 
-    // diese species anzeigen lassen mit bilder 
-    // die evolutions kette anzeigen lassen mit html und css von links nach rechts 
+async function handleEvoTab(pokemon) {
+    const speciesResponse = await fetch(pokemon.species.url);
+    const speciesData = await speciesResponse.json();
 
+    const evoChainUrl = speciesData.evolution_chain.url;
+    const evoChainResponse = await fetch(evoChainUrl);
+    const evoChainData = await evoChainResponse.json();
+
+    const stage1 = evoChainData.chain?.species?.name;
+    const stage2 = evoChainData.chain?.evolves_to?.[0]?.species?.name;
+    const stage3 = evoChainData.chain?.evolves_to?.[0]?.evolves_to?.[0]?.species?.name;
+
+    const stage1Data = await getPokemonDataByName(stage1);
+    const stage1Image = stage1Data.sprites.other['official-artwork'].front_default;
+
+    const stage2Data = await getPokemonDataByName(stage2);
+    const stage2Image = stage2Data.sprites.other['official-artwork'].front_default;
+
+    const stage3Data = await getPokemonDataByName(stage3);
+    const stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
+
+
+    const evoHTML = renderEvoTab(stage1, stage1Image, stage2, stage2Image, stage3, stage3Image)
+    document.getElementById('tab-content-areas').innerHTML = evoHTML;
 }
+//#endregion
+//#region Pokemon-Data-ByName
+async function getPokemonDataByName(name) {
+    let data = allPokemons.find(p => p.name === name);
+    if (!data) {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        data = await response.json();
+    }
+    return data;
+}
+
 //#endregion
 //#region StopPropagation-Tabs
 // verhindert beim klicken auf ein tab, dass overlay geschlossen wird 

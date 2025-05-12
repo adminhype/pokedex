@@ -1,3 +1,4 @@
+//#region PokemonCard-Template
 // Funktion, die das HTML einer einzelnen Pokémon-Karte erzeugt.
 // Die Karte zeigt ID, Name, Bild, Typen und reagiert auf Klick mit Overlay-Öffnung.
 function renderPokemonCards(id, name, image, type, buttonHTML) {
@@ -16,6 +17,8 @@ function renderPokemonCards(id, name, image, type, buttonHTML) {
         </div>
     `;
 }
+//#endregion
+//#region Load-More-Button-Template
 // Funktion, die den HTML-Button zum Nachladen weiterer Pokémon zurückgibt.
 // Wird verwendet, wenn noch weitere Pokémon verfügbar sind.
 function renderLoadMoreButton() {
@@ -25,6 +28,8 @@ function renderLoadMoreButton() {
         </div>
     `;
 }
+//#endregion
+//#region Loading-Screen-For-Overlay_Template
 // Funktion, die HTML für das Lade-Overlay (z. B. GIF) zurückgibt.
 // Wird angezeigt, während API-Daten geladen werden.
 function renderLoadingOverlay() {
@@ -34,6 +39,8 @@ function renderLoadingOverlay() {
         </div>
     `;
 }
+//#endregion
+//#region Pokemon-Overlay_Card_Template
 // Die logik wird aus openOverlay übernommen um das overlay mit den selben inhalten wie die kleine Card anzeigen zulassen
 function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
     // beim klicken auf die kleine card erscheint das passende pokemon mit der overlaycard 
@@ -51,6 +58,8 @@ function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
             </div>
         </div>`;
 }
+//#endregion
+//#region Overlay-Card-Template
 // Kompletter HTML-inhalt für das Overlay 
 function renderOverlayCard(id, name, image, type1, buttonHTML) {
     return `
@@ -64,6 +73,8 @@ function renderOverlayCard(id, name, image, type1, buttonHTML) {
         <div id="tab-content-areas" class="tab-content-area"></div>
     `;
 }
+//#endregion
+//#region Main-Tab-template
 // pokemonTemplate.js
 function renderMainTab(height, weight, baseXP, abilities) {
     return `
@@ -75,6 +86,8 @@ function renderMainTab(height, weight, baseXP, abilities) {
         </ul>
     `;
 }
+//#endregion
+//#region Stats-Tab_Template
 function renderStatsTab(name, value) {
     return ` <div class="stat-row">
         <span>${name}</span>
@@ -82,14 +95,26 @@ function renderStatsTab(name, value) {
         <span>${value}</span>
     </div>`;
 }
-
+//#endregion
+//#region EvoChain-Tab_Template
 function renderEvoTab() {
     return `
-        <div class="evo-chain-wrapper">
-        <div class="evo-stage">
-    <img src="" alt="x" />
-    <span>x</span>
+    <div class="evo-chain-wrapper">
+    <div class="evo-stage">
+        <img src="{STAGE_1_IMAGE}" alt="{STAGE_1_NAME}" />
+        <span>{STAGE_1_NAME}</span>
     </div>
-        </div>
+    <span class="arrow">→</span>
+    <div class="evo-stage">
+        <img src="{STAGE_2_IMAGE}" alt="{STAGE_2_NAME}" />
+        <span>{STAGE_2_NAME}</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="evo-stage">
+        <img src="{STAGE_3_IMAGE}" alt="{STAGE_3_NAME}" />
+        <span>{STAGE_3_NAME}</span>
+    </div>
+    </div>
     `;
 }
+//#endregion

@@ -1,7 +1,9 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
-
+//#region API-Variable / Array
 let offset = 0; // API-Endpunkt zur Abfrage der Pokémon-Daten. Offset startet bei 0.
 const allPokemons = []; //zwischenspeicher um bereitsgeladene pokemon für das overlay zu verwenden
+//#endregion
+//#region LoadingOverlay
 function showLoadingOverlay() { // Zeigt das Lade-Overlay an, indem HTML-Inhalt in den Container geschrieben wird.
     document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
 }
@@ -12,6 +14,8 @@ function wait(ms) { // Wartet eine definierte Zeit in Millisekunden, nützlich f
     // Beispiel: await wait(1000); wartet 1 Sekunde.
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+//#endregion
+//#region Load-Pokemons
 // Lädt 20 Pokémon von der API, zeigt sie an und verwaltet Ladeanimation und Button.
 async function loadPokemons() {
     showLoadingOverlay(); // Zeigt das Ladebild (z. B. eine GIF-Ente)
@@ -24,12 +28,16 @@ async function loadPokemons() {
     removeLoadingOverlay();  // Ladebild ausblenden
     renderLoadButton(); // Button „Mehr anzeigen“ wieder anzeigen
 }
+//#endregion
+//#region Pokemon-Liste
 // Ruft für jeden Eintrag in der Liste `renderSinglePokemon()` auf.
 async function renderPokemonList(pokemonList) {
     for (let i = 0; i < pokemonList.length; i++) {
         await renderSinglePokemon(pokemonList[i].url); // Holt Detail-URL des Pokémons
     }
 }
+//#endregion
+// #region Single-Pokemon 
 // Lädt Daten eines einzelnen Pokémons und erstellt eine Karte im Grid.
 async function renderSinglePokemon(url) {
     const response = await fetch(url); // Ruft die Detaildaten ab
@@ -47,6 +55,8 @@ async function renderSinglePokemon(url) {
     const cardHTML = renderPokemonCards(id, name, image, bgClass, buttonsHTML); // Karte bauen
     document.getElementById('content').innerHTML += cardHTML; // Karte zum Grid hinzufügen
 }
+//#endregion
+//#region Load-Button
 // Erstellt oder entfernt den „Mehr anzeigen“-Button je nach Offset.
 function renderLoadButton() {
     const btnContainer = document.getElementById('load-button-container');
@@ -58,6 +68,8 @@ function renderLoadButton() {
     const btn = document.getElementById('load-more-btn'); // Button-HTML einfügen
     if (btn) btn.onclick = loadPokemons; // Klick ruft `loadPokemons()` erneut auf
 }
+//#endregion
+//#region Typ-Buttons
 // Erzeugt die zwei Typ-Buttons je nach Pokémon-Typ.
 function createTypeButtons(type1, type2) {
     let html = `<button class="type-icon ${getTypeClass(type1)}">${type1}</button>`;
@@ -70,8 +82,8 @@ function createTypeButtons(type1, type2) {
 function getTypeClass(type) {
     return `type-${type}`;
 }
-
-
+//#endregion
+//#region Open-Overlay
 function openOverlay(id) { // overlay große ansicht für Pokemon Cards
     // im globalen Array nach passender id suchen in pokemon speichern
     const pokemon = allPokemons.find(data => data.id === id)
@@ -89,11 +101,15 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
     document.getElementById('overlay').classList.remove('d-none');
 
 }
+//#endregion
+//#region Close-Oveerlay
 // Overlay wieder schließbar 
 function closeOverlay() {
     document.getElementById('overlay').classList.add('d-none');
     document.getElementById('overlay-content').innerHTML = "";
 }
+//#endregion
+//#region Show-Tab
 // Onclick die angeforderten inhalte aus der api rendern z.b main, stats, evo-chain 
 function showTab(type, id) {
     const pokemon = allPokemons.find(pokemon => pokemon.id === id); // pokemon suchen
@@ -106,7 +122,8 @@ function showTab(type, id) {
         handleEvoTab(pokemon);
     }
 }
-
+//#endregion
+//#region Main-Tab
 function handleMainTab(pokemon) {
     let abilitiesHTML = ''; //zwischenspeicher für fähgkeiten
     pokemon.abilities.forEach((a, i) => { //aus dem Array alle fähigkeiten als zeichenkette greifen
@@ -120,7 +137,8 @@ function handleMainTab(pokemon) {
     const html = renderMainTab(pokemon.height, pokemon.weight, pokemon.base_experience, abilitiesHTML);
     document.getElementById('tab-content-areas').innerHTML = html; // generierte html in das content overlay bereich
 }
-
+//#endregion
+//#region Stats-Tab
 function handleStatsTab(pokemon) {
     let baseHTML = ''; // zwischenspeicher für status 
     pokemon.stats.forEach((entry) => { //aus dem array alle statuspunkte als balken wiedergeben
@@ -130,8 +148,19 @@ function handleStatsTab(pokemon) {
     });
     document.getElementById('tab-content-areas').innerHTML = baseHTML;
 }
+//#endregion
+//#region EvoChain-Tab
+function handleEvoTab() {
+    // also ich müsste ja eine neue url fetchen aus der api 
+    // diese species anzeigen lassen mit bilder 
+    // die evolutions kette anzeigen lassen mit html und css von links nach rechts 
+
+}
+//#endregion
+//#region StopPropagation-Tabs
 // verhindert beim klicken auf ein tab, dass overlay geschlossen wird 
 function handleTabClick(event, type, id) {
     event.stopPropagation(); // verhindert das klicken
     showTab(type, id); // steurt den tab inhalt
 }
+//#endregion

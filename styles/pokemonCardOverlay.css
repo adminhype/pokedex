@@ -63,28 +63,33 @@
     padding: 1rem;
     border-radius: 8px;
 }
+/* Evolution Chain Tab  */
 .evo-chain-wrapper {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: 1rem;
-}
-.evo-stage {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 1rem;
 
-    img {
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
+    .evo-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        span {
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
     }
 
-    span {
-        margin-top: 0.5rem;
-        font-weight: bold;
-        color: #333;
+    .arrow {
+        font-size: 1.5rem;
+        color: #666;
     }
 }

@@ -57,7 +57,8 @@ function renderOverlayCard(id, name, image, type1, buttonHTML) {
         ${renderPokemonOverlayCard(id, name, image, type1, buttonHTML)}
         <div class="overlay-tabs">
             <button class="tab-btn" onclick="handleTabClick(event, 'main', ${id})">Main</button>
-            <button class="tab-btn" onclick="showTab('stats', ${id})">Stats</button>
+            <button class="tab-btn" onclick="handleTabClick(event, 'stats', ${id})">Stats</button>
+
             <button class="tab-btn" onclick="showTab('chain', ${id})">Evo Chain</button>
         </div>
         <div id="tab-content-areas" class="tab-content-area"></div>
@@ -72,5 +73,23 @@ function renderMainTab(height, weight, baseXP, abilities) {
             <li>Base Experience: ${baseXP}</li>
             <li>Abilities: ${abilities}</li>
         </ul>
+    `;
+}
+function renderStatsTab(name, value) {
+    return ` <div class="stat-row">
+        <span>${name}</span>
+        <progress max="255" value="${value}"></progress>
+        <span>${value}</span>
+    </div>`;
+}
+
+function renderEvoTab() {
+    return `
+        <div class="evo-chain-wrapper">
+        <div class="evo-stage">
+    <img src="" alt="x" />
+    <span>x</span>
+    </div>
+        </div>
     `;
 }

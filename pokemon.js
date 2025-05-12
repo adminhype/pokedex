@@ -96,20 +96,39 @@ function closeOverlay() {
 }
 // Onclick die angeforderten inhalte aus der api rendern z.b main, stats, evo-chain 
 function showTab(type, id) {
-    const pokemon = allPokemons.find(pokemon => pokemon.id === id) // pokemon suchen
+    const pokemon = allPokemons.find(pokemon => pokemon.id === id); // pokemon suchen
     document.getElementById('tab-content-areas').innerHTML = ""; // vorherige inhalte leeren um überlappen zu vermeiden
     if (type === 'main') { // es wird geprüft welcher tab geklickt wurde
-        let abilitiesHTML = ''; //zwischenspeicher für fähgkeiten
-        pokemon.abilities.forEach((a, i) => { //aus dem Array alle fähigkeiten als zeichenkette greifen
-            abilitiesHTML += a.ability.name;
-            if (i < pokemon.abilities.length - 1) { // für jeden eintrag ein komma (dazwischen)
-                abilitiesHTML += ', ';
-            }
-        });
-        // die gesammten werte werden an renderMainTab übergeben
-        const html = renderMainTab(pokemon.height, pokemon.weight, pokemon.base_experience, abilitiesHTML);
-        document.getElementById('tab-content-areas').innerHTML = html; // generierte html in das content overlay bereich
+        handleMainTab(pokemon);
+    } else if (type === 'stats') {
+        handleStatsTab(pokemon);
+    } else if (type === 'chain') {
+        handleEvoTab(pokemon);
     }
+}
+
+function handleMainTab(pokemon) {
+    let abilitiesHTML = ''; //zwischenspeicher für fähgkeiten
+    pokemon.abilities.forEach((a, i) => { //aus dem Array alle fähigkeiten als zeichenkette greifen
+        abilitiesHTML += a.ability.name;
+        if (i < pokemon.abilities.length - 1) { // für jeden eintrag ein komma (dazwischen)
+            abilitiesHTML += ', ';
+        }
+
+    });
+    // die gesammten werte werden an renderMainTab übergeben
+    const html = renderMainTab(pokemon.height, pokemon.weight, pokemon.base_experience, abilitiesHTML);
+    document.getElementById('tab-content-areas').innerHTML = html; // generierte html in das content overlay bereich
+}
+
+function handleStatsTab(pokemon) {
+    let baseHTML = ''; // zwischenspeicher für status 
+    pokemon.stats.forEach((entry) => { //aus dem array alle statuspunkte als balken wiedergeben
+        const name = entry.stat.name;
+        const value = entry.base_stat;
+        baseHTML += renderStatsTab(name, value);
+    });
+    document.getElementById('tab-content-areas').innerHTML = baseHTML;
 }
 // verhindert beim klicken auf ein tab, dass overlay geschlossen wird 
 function handleTabClick(event, type, id) {

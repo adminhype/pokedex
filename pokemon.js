@@ -1,7 +1,7 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 
 let offset = 0; // API-Endpunkt zur Abfrage der Pokémon-Daten. Offset startet bei 0.
-let allPokemons = [];
+const allPokemons = []; //zwischenspeicher um bereitsgeladene pokemon für das overlay zu verwenden
 function showLoadingOverlay() { // Zeigt das Lade-Overlay an, indem HTML-Inhalt in den Container geschrieben wird.
     document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
 }
@@ -92,5 +92,27 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
 // Overlay wieder schließbar 
 function closeOverlay() {
     document.getElementById('overlay').classList.add('d-none');
-    document.getElementById('overlay-content').innerHTML = '';
+    document.getElementById('overlay-content').innerHTML = "";
+}
+// Onclick die angeforderten inhalte aus der api rendern z.b main, stats, evo-chain 
+function showTab(type, id) {
+    const pokemon = allPokemons.find(pokemon => pokemon.id === id) // pokemon suchen
+    document.getElementById('tab-content-areas').innerHTML = ""; // vorherige inhalte leeren um überlappen zu vermeiden
+    if (type === 'main') { // es wird geprüft welcher tab geklickt wurde
+        let abilitiesHTML = ''; //zwischenspeicher für fähgkeiten
+        pokemon.abilities.forEach((a, i) => { //aus dem Array alle fähigkeiten als zeichenkette greifen
+            abilitiesHTML += a.ability.name;
+            if (i < pokemon.abilities.length - 1) { // für jeden eintrag ein komma (dazwischen)
+                abilitiesHTML += ', ';
+            }
+        });
+        // die gesammten werte werden an renderMainTab übergeben
+        const html = renderMainTab(pokemon.height, pokemon.weight, pokemon.base_experience, abilitiesHTML);
+        document.getElementById('tab-content-areas').innerHTML = html; // generierte html in das content overlay bereich
+    }
+}
+// verhindert beim klicken auf ein tab, dass overlay geschlossen wird 
+function handleTabClick(event, type, id) {
+    event.stopPropagation(); // verhindert das klicken
+    showTab(type, id); // steurt den tab inhalt
 }

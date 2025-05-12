@@ -56,10 +56,21 @@ function renderOverlayCard(id, name, image, type1, buttonHTML) {
     return `
         ${renderPokemonOverlayCard(id, name, image, type1, buttonHTML)}
         <div class="overlay-tabs">
-            <button class="tab-btn">Main</button>
-            <button class="tab-btn">Stats</button>
-            <button class="tab-btn">Evo Chain</button>
+            <button class="tab-btn" onclick="handleTabClick(event, 'main', ${id})">Main</button>
+            <button class="tab-btn" onclick="showTab('stats', ${id})">Stats</button>
+            <button class="tab-btn" onclick="showTab('chain', ${id})">Evo Chain</button>
         </div>
-        <div class="tab-content-area"></div>
+        <div id="tab-content-areas" class="tab-content-area"></div>
+    `;
+}
+// pokemonTemplate.js
+function renderMainTab(height, weight, baseXP, abilities) {
+    return `
+        <ul>
+            <li>Height: ${height}</li>
+            <li>Weight: ${weight}</li>
+            <li>Base Experience: ${baseXP}</li>
+            <li>Abilities: ${abilities}</li>
+        </ul>
     `;
 }

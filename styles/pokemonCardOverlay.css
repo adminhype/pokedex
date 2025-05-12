@@ -1,9 +1,10 @@
+/* Große Karte im Overlay */
 .pokemon-card-overlay {
     width: 320px;
     border-radius: 12px;
     margin: 1rem auto;
     text-align: center;
-
+    /* Wrapper für das Bild der Overlay-Karte */
     .pokemon-img-wrapper-overlay {
         position: relative;
         background-color: white;
@@ -11,14 +12,14 @@
         justify-content: center;
         align-items: center;
         padding: 12px;
-
+        /* Pokémon-Bild im Overlay */
         .pokemon-img {
             width: 80%;
             max-width: 250px;
             border-radius: 10px;
             object-fit: contain;
         }
-
+        /* ID-Anzeige oben rechts im Overlay */
         .pokemon-id {
             position: absolute;
             top: 8px;
@@ -28,21 +29,21 @@
             font-weight: bold;
         }
     }
-
+    /* Unterer Bereich der Karte (Name + Typen) */
     .card-bottom {
         padding-top: 1rem;
-
+        /* Name im Overlay, größer dargestellt */
         .pokemon-name {
             font-size: 1.6rem;
             color: #222;
             margin-bottom: 0.5rem;
         }
-
+        /* Container für Typen-Buttons */
         .pokemon-types {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
-
+            /* Einzelner Typen-Button */
             .type-icon {
                 padding: 6px 12px;
                 border-radius: 10px;
@@ -52,4 +53,13 @@
             }
         }
     }
+}
+/* Bereich unter den Tabs mit Infos */
+.tab-content-area {
+    display: block;
+    margin-top: 1rem;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
 }

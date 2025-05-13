@@ -45,7 +45,7 @@ function renderLoadingOverlay() {
 function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
     // beim klicken auf die kleine card erscheint das passende pokemon mit der overlaycard 
     return `
-        <div class="pokemon-card-overlay">
+        <div class="pokemon-card-overlay ">
             <div class="pokemon-img-wrapper-overlay">
                 <span class="pokemon-id">#${id}</span>
                 <img class="pokemon-img" src="${image}" alt="${name}">

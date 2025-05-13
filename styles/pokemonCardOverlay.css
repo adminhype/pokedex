@@ -63,6 +63,9 @@
     padding: 1rem;
     border-radius: 8px;
 }
+.tab-btn {
+    cursor: pointer;
+}
 /* Evolution Chain Tab  */
 .evo-chain-wrapper {
     display: flex;
@@ -92,4 +95,7 @@
         font-size: 1.5rem;
         color: #666;
     }
+}
+.no-scroll {
+    overflow: hidden;
 }

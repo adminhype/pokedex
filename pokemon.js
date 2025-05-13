@@ -99,7 +99,7 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
 
     // Overlay sichtbar machen die klasse d-none entfernen 
     document.getElementById('overlay').classList.remove('d-none');
-
+    document.body.classList.add('no-scroll')
 }
 //#endregion
 //#region Close-Oveerlay
@@ -107,6 +107,11 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
 function closeOverlay() {
     document.getElementById('overlay').classList.add('d-none');
     document.getElementById('overlay-content').innerHTML = "";
+    document.body.classList.remove('no-scroll')
+
+}
+function stopClick(event) {
+    event.stopPropagation(); // verhindert, dass das Schließen ausgelöst wird
 }
 //#endregion
 //#region Show-Tab

@@ -89,9 +89,9 @@ function renderMainTab(height, weight, baseXP, abilities) {
 //#region Stats-Tab_Template
 function renderStatsTab(name, value) {
     return ` <div class="stat-row">
-        <span>${name}</span>
+        <span class="text-row">${name}</span>
         <progress max="255" value="${value}"></progress>
-        <span>${value}</span>
+        <span class="number-row">${value}</span>
     </div>`;
 }
 //#endregion

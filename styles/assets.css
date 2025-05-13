@@ -8,6 +8,16 @@
     align-items: center;
     padding: 1rem;
 }
+.main-container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-direction: column;
+}
 .d-none {
     display: none;
 }

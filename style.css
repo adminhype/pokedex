@@ -4,7 +4,6 @@ body {
     background-color: #532b5c;
     color: #fff;
     line-height: 1.6;
-    min-height: 100vh;
 }
 header {
     .logo img {
@@ -13,6 +12,7 @@ header {
     }
 }
 footer {
+    border-top: 2px solid black;
     color: white;
     img {
         width: 100px;

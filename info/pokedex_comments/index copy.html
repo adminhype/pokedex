@@ -26,13 +26,12 @@
     <body onload="loadPokemons()">
         <header>
             <nav class="container">
+                <!-- Navigation enthält Logo und Suchfeld -->
                 <a class="logo">
                     <img src="./img/assets/logo/download.png" alt="Logo" />
                 </a>
-                <form onsubmit="event.preventDefault();">
-                    <label for="inputField" class="visually-hidden"
-                        >Suche</label
-                    >
+                <form>
+                    <!-- Suchfeld mit Mindestlänge 3 → verhindert zu frühe Filterung -->
                     <input
                         type="text"
                         id="inputField"
@@ -44,13 +43,18 @@
             </nav>
         </header>
 
+        <!-- Begrüßungstext unter dem Header → persönlicher Einstieg -->
         <div class="hero-text flex flex-center">
             <p>Finde dein lieblings Pokemon & ....</p>
         </div>
         <main>
+            <!-- Hier erscheinen alle Pokémon-Karten -->
             <section id="content" class="pokemon-grid"></section>
+            <!-- Bereich für den "Mehr anzeigen..." Button -->
             <div id="load-button-container"></div>
+            <!-- Bereich für das Lade-GIF (z. B. Ente) -->
             <div id="overlay-container"></div>
+            <!-- Overlay für große Kartenansicht, wird per JS sichtbar gemacht -->
             <div
                 id="overlay"
                 class="overlay-wrapper d-none"
@@ -64,11 +68,8 @@
             </div>
         </main>
         <footer class="container">
-            <a href="#"
-                ><img
-                    src="./img/assets/logo/download.png"
-                    alt="Pokedex Logo im Footer"
-            /></a>
+            <!-- Wiederverwendung des Logos → Branding am Seitenende -->
+            <a href=""><img src="./img/assets/logo/download.png" alt="" /></a>
             <p></p>
         </footer>
         <script src="./scripts/pokemonTemplate.js"></script>

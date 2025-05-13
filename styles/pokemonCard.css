@@ -31,7 +31,7 @@
     .pokemon-name {
         font-size: 1.2rem;
         margin: 0.2rem 0;
-        color: #222;
+        color: black;
     }
     /* Bild des Pokémon mit runden Ecken */
     .pokemon-img {
@@ -39,7 +39,6 @@
         height: auto;
         object-fit: contain;
         margin: 0.5rem 0;
-        border-radius: 10px;
     }
     /* Container für die Typen-Buttons */
     .pokemon-types {
@@ -47,14 +46,15 @@
         justify-content: center;
         align-items: center;
         gap: 8px;
+        width: 100%;
         /* Style für jeden Typ-Button */
         .type-icon {
             text-transform: capitalize;
             font-weight: bold;
             padding: 6px 10px;
-            border-radius: 10px;
             transition: all 0.2s ease;
-            margin: 0.5rem;
+            width: 100%;
+            margin: 6px 12px;
 
             &:hover {
                 transform: scale(1.05);

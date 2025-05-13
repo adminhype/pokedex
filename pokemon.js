@@ -1,8 +1,10 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 //#region API-Variable / Array
 let offset = 0; // API-Endpunkt zur Abfrage der Pokémon-Daten. Offset startet bei 0.
+let currentPokemonIndex = 0; // Welches Pokemonwird angezeigt für die overlay Arrows
 const allPokemons = []; //zwischenspeicher um bereitsgeladene pokemon für das overlay zu verwenden
 //#endregion
+
 //#region LoadingOverlay
 function showLoadingOverlay() { // Zeigt das Lade-Overlay an, indem HTML-Inhalt in den Container geschrieben wird.
     document.getElementById('overlay-container').innerHTML = renderLoadingOverlay();
@@ -15,6 +17,7 @@ function wait(ms) { // Wartet eine definierte Zeit in Millisekunden, nützlich f
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 //#endregion
+
 //#region Load-Pokemons
 // Lädt 20 Pokémon von der API, zeigt sie an und verwaltet Ladeanimation und Button.
 async function loadPokemons() {
@@ -29,6 +32,7 @@ async function loadPokemons() {
     renderLoadButton(); // Button „Mehr anzeigen“ wieder anzeigen
 }
 //#endregion
+
 //#region Pokemon-Liste
 // Ruft für jeden Eintrag in der Liste `renderSinglePokemon()` auf.
 async function renderPokemonList(pokemonList) {
@@ -37,6 +41,7 @@ async function renderPokemonList(pokemonList) {
     }
 }
 //#endregion
+
 // #region Single-Pokemon 
 // Lädt Daten eines einzelnen Pokémons und erstellt eine Karte im Grid.
 async function renderSinglePokemon(url) {
@@ -56,6 +61,7 @@ async function renderSinglePokemon(url) {
     document.getElementById('content').innerHTML += cardHTML; // Karte zum Grid hinzufügen
 }
 //#endregion
+
 //#region Load-Button
 // Erstellt oder entfernt den „Mehr anzeigen“-Button je nach Offset.
 function renderLoadButton() {
@@ -69,6 +75,7 @@ function renderLoadButton() {
     if (btn) btn.onclick = loadPokemons; // Klick ruft `loadPokemons()` erneut auf
 }
 //#endregion
+
 //#region Typ-Buttons
 // Erzeugt die zwei Typ-Buttons je nach Pokémon-Typ.
 function createTypeButtons(type1, type2) {
@@ -83,8 +90,11 @@ function getTypeClass(type) {
     return `type-${type}`;
 }
 //#endregion
+
 //#region Open-Overlay
 function openOverlay(id) { // overlay große ansicht für Pokemon Cards
+    // welches pokemon aktuell im overlay ist 
+    currentPokemonIndex = allPokemons.findIndex(p => p.id === id);
     // im globalen Array nach passender id suchen in pokemon speichern
     const pokemon = allPokemons.find(data => data.id === id)
     const name = pokemon.name.toUpperCase(); //Name in großbuchstaben
@@ -102,6 +112,23 @@ function openOverlay(id) { // overlay große ansicht für Pokemon Cards
     document.body.classList.add('no-scroll')
 }
 //#endregion
+//#region Overlay-Show-Previous-OR-Next-Pokemon
+function showNextPokemon() {
+    if (currentPokemonIndex < allPokemons.length - 1) {
+        currentPokemonIndex++;
+        const nextPokemon = allPokemons[currentPokemonIndex];
+        openOverlay(nextPokemon.id);
+    }
+}
+
+function showPreviousPokemon() {
+    if (currentPokemonIndex > 0) {
+        currentPokemonIndex--;
+        const prevPokemon = allPokemons[currentPokemonIndex];
+        openOverlay(prevPokemon.id);
+    }
+}
+//#endregion
 //#region Close-Oveerlay
 // Overlay wieder schließbar 
 function closeOverlay() {
@@ -114,6 +141,7 @@ function stopClick(event) {
     event.stopPropagation(); // verhindert, dass das Schließen ausgelöst wird
 }
 //#endregion
+
 //#region Show-Tab
 // Onclick die angeforderten inhalte aus der api rendern z.b main, stats, evo-chain 
 function showTab(type, id) {
@@ -128,6 +156,7 @@ function showTab(type, id) {
     }
 }
 //#endregion
+
 //#region Main-Tab
 function handleMainTab(pokemon) {
     let abilitiesHTML = ''; //zwischenspeicher für fähgkeiten
@@ -143,6 +172,7 @@ function handleMainTab(pokemon) {
     document.getElementById('tab-content-areas').innerHTML = html; // generierte html in das content overlay bereich
 }
 //#endregion
+
 //#region Stats-Tab
 function handleStatsTab(pokemon) {
     let baseHTML = ''; // zwischenspeicher für status 
@@ -154,56 +184,63 @@ function handleStatsTab(pokemon) {
     document.getElementById('tab-content-areas').innerHTML = baseHTML;
 }
 //#endregion
+
 //#region EvoChain-Tab
-
 async function handleEvoTab(pokemon) {
+    // Alle Evo stufen anhand des übergebenen Pokemon-Objects
     const { stage1, stage2, stage3 } = await getEvoChainData(pokemon);
-
+    //Bilddaten ersten evostufe
     const stage1Data = await getPokemonDataByName(stage1);
     const stage1Image = stage1Data.sprites.other['official-artwork'].front_default;
 
     let stage2Image = "";
     let stage3Image = "";
-
+    // if answeisung - prüft, ob eine zweite Stufe exestiert → falls ja bild wird geladen sonst bleibt leer
     if (stage2) {
         const stage2Data = await getPokemonDataByName(stage2);
         stage2Image = stage2Data.sprites.other['official-artwork'].front_default;
     }
-
+    // gleiche if anweisung
     if (stage3) {
         const stage3Data = await getPokemonDataByName(stage3);
         stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
     }
-
+    // wenn nur eine Stufe → keine entwicklung rendert nur eine karte
     if (!stage2 && !stage3) {
         const evoHTML = renderEvoTab1(stage1, stage1Image);
         document.getElementById('tab-content-areas').innerHTML = evoHTML;
+        // wenn zei Stufen → zwei karten werden nebeneinander gerendert
     } else if (stage2 && !stage3) {
         const evoHTML = renderEvoTab2(stage1, stage1Image, stage2, stage2Image);
         document.getElementById('tab-content-areas').innerHTML = evoHTML;
+        // wenn drei stufen vorhanden → vollständige entwicklungskette
     } else if (stage2 && stage3) {
         const evoHTML = renderEvoTab3(stage1, stage1Image, stage2, stage2Image, stage3, stage3Image);
         document.getElementById('tab-content-areas').innerHTML = evoHTML;
     }
 }
 //#endregion
+
 //#region Get-Evochain-Data-handleEvoTab
 async function getEvoChainData(pokemon) {
+    //Url für die Spezies-Daten → enthält link zur Evolutionskette
     const speciesResponse = await fetch(pokemon.species.url);
     const speciesData = await speciesResponse.json();
-
+    // Alle Evoultionsstufen in einem object greifen
     const evoChainUrl = speciesData.evolution_chain.url;
     const evoChainResponse = await fetch(evoChainUrl);
     const evoChainData = await evoChainResponse.json();
+    //Wenn Stufen vorhanden werden die stufen extrahiert
+    //→ optionales chaining (?.) verhindert das crashen,falls eine stufe fehlt
     const stage1 = evoChainData.chain?.species?.name;
     const stage2 = evoChainData.chain?.evolves_to?.[0]?.species?.name;
     const stage3 = evoChainData.chain?.evolves_to?.[0]?.evolves_to?.[0]?.species?.name;
-
+    // gibt die Entwicklungsstufen als obeject zurück
+    //→ zentralisiert den zugriff auf datenstruktur
     return { stage1, stage2, stage3 }
-
-
 }
 //#endregion
+
 //#region Get-Pokemon-ByName
 async function getPokemonDataByName(name) {
     let data = allPokemons.find(p => p.name === name);
@@ -215,6 +252,7 @@ async function getPokemonDataByName(name) {
 }
 
 //#endregion
+
 //#region StopPropagation-Tabs
 // verhindert beim klicken auf ein tab, dass overlay geschlossen wird 
 function handleTabClick(event, type, id) {

@@ -18,6 +18,7 @@ function renderPokemonCards(id, name, image, type, buttonHTML) {
     `;
 }
 //#endregion
+
 //#region Load-More-Button-Template
 // Funktion, die den HTML-Button zum Nachladen weiterer Pokémon zurückgibt.
 // Wird verwendet, wenn noch weitere Pokémon verfügbar sind.
@@ -29,6 +30,7 @@ function renderLoadMoreButton() {
     `;
 }
 //#endregion
+
 //#region Loading-Screen-For-Overlay_Template
 // Funktion, die HTML für das Lade-Overlay (z. B. GIF) zurückgibt.
 // Wird angezeigt, während API-Daten geladen werden.
@@ -40,6 +42,7 @@ function renderLoadingOverlay() {
     `;
 }
 //#endregion
+
 //#region Pokemon-Overlay_Card_Template
 // Die logik wird aus openOverlay übernommen um das overlay mit den selben inhalten wie die kleine Card anzeigen zulassen
 function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
@@ -56,9 +59,15 @@ function renderPokemonOverlayCard(id, name, image, type, buttonHTML) {
                     ${buttonHTML}
                 </div>
             </div>
-        </div>`;
+        </div>
+        <div class="overlay-nav-btns">
+            <button onclick="showPreviousPokemon()" class="overlay-nav left">←</button>
+            <button onclick="showNextPokemon()" class="overlay-nav right">→</button>
+        </div>            `;
+
 }
 //#endregion
+
 //#region Overlay-Card-Template
 // Kompletter HTML-inhalt für das Overlay 
 function renderOverlayCard(id, name, image, type1, buttonHTML) {
@@ -74,6 +83,7 @@ function renderOverlayCard(id, name, image, type1, buttonHTML) {
     `;
 }
 //#endregion
+
 //#region Main-Tab-template
 // pokemonTemplate.js
 function renderMainTab(height, weight, baseXP, abilities) {
@@ -87,6 +97,7 @@ function renderMainTab(height, weight, baseXP, abilities) {
     `;
 }
 //#endregion
+
 //#region Stats-Tab_Template
 function renderStatsTab(name, value) {
     return ` <div class="stat-row">
@@ -97,6 +108,8 @@ function renderStatsTab(name, value) {
 }
 //#endregion
 
+//#region Render-Evo-Tab-Template
+//  Darstellung für Pokémon ohne Weiterentwicklung (z. B. Ditto)
 function renderEvoTab1(name1, img1) {
     return `
     <div class="evo-chain-wrapper">
@@ -106,6 +119,7 @@ function renderEvoTab1(name1, img1) {
         </div>
     </div>`;
 }
+// Darstellung für Pokémon mit 1x Entwicklung (z. B. Zubat → Golbat)
 function renderEvoTab2(name1, img1, name2, img2) {
     return `
     <div class="evo-chain-wrapper">
@@ -120,6 +134,7 @@ function renderEvoTab2(name1, img1, name2, img2) {
         </div>
     </div>`;
 }
+// Darstellung für vollständige Ketten mit 3 Stufen
 function renderEvoTab3(name1, img1, name2, img2, name3, img3) {
     return `
     <div class="evo-chain-wrapper">
@@ -139,3 +154,4 @@ function renderEvoTab3(name1, img1, name2, img2, name3, img3) {
         </div>
     </div>`;
 }
+//#endregion

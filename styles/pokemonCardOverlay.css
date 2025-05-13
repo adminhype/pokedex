@@ -45,11 +45,12 @@
             gap: 0.5rem;
             /* Einzelner Typen-Button */
             .type-icon {
-                padding: 6px 12px;
-                border-radius: 10px;
-                font-weight: bold;
                 text-transform: capitalize;
-                transition: transform 0.2s ease;
+                font-weight: bold;
+                padding: 6px 10px;
+                transition: all 0.2s ease;
+                width: 100%;
+                margin: 6px 12px;
             }
         }
     }
@@ -63,7 +64,17 @@
     padding: 1rem;
     border-radius: 8px;
 }
+.overlay-tabs {
+    display: flex;
+    justify-content: center;
+}
 .tab-btn {
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    margin: 0.5rem;
     cursor: pointer;
 }
 /* Evolution Chain Tab  */
@@ -98,4 +109,19 @@
 }
 .no-scroll {
     overflow: hidden;
+}
+.overlay-nav-btns {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+.overlay-nav {
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    margin: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 10%;
 }

@@ -56,166 +56,166 @@
 /* Leuchteffekt beim Hover je nach Typ */
 
 .hover-shadow-grass:hover {
-    box-shadow: 0 0 12px 4px #78c850;
+    box-shadow: 0 0 6px 4px #78c850;
 }
 .hover-shadow-fire:hover {
-    box-shadow: 0 0 12px 4px #f08030;
+    box-shadow: 0 0 6px 4px #f08030;
 }
 .hover-shadow-water:hover {
-    box-shadow: 0 0 12px 4px #6890f0;
+    box-shadow: 0 0 6px 4px #6890f0;
 }
 .hover-shadow-poison:hover {
-    box-shadow: 0 0 12px 4px #a040a0;
+    box-shadow: 0 0 6px 4px #a040a0;
 }
 .hover-shadow-fighting:hover {
-    box-shadow: 0 0 12px 4px #c03028;
+    box-shadow: 0 0 6px 4px #c03028;
 }
 .hover-shadow-flying:hover {
-    box-shadow: 0 0 12px 4px #a890f0;
+    box-shadow: 0 0 6px 4px #a890f0;
 }
 .hover-shadow-ground:hover {
-    box-shadow: 0 0 12px 4px #e0c068;
+    box-shadow: 0 0 6px 4px #e0c068;
 }
 .hover-shadow-rock:hover {
-    box-shadow: 0 0 12px 4px #b8a038;
+    box-shadow: 0 0 6px 4px #b8a038;
 }
 .hover-shadow-bug:hover {
-    box-shadow: 0 0 12px 4px #a8b820;
+    box-shadow: 0 0 6px 4px #a8b820;
 }
 .hover-shadow-ghost:hover {
-    box-shadow: 0 0 12px 4px #705898;
+    box-shadow: 0 0 6px 4px #705898;
 }
 .hover-shadow-steel:hover {
-    box-shadow: 0 0 12px 4px #b8b8d0;
+    box-shadow: 0 0 6px 4px #b8b8d0;
 }
 .hover-shadow-normal:hover {
-    box-shadow: 0 0 12px 4px #a8a878;
+    box-shadow: 0 0 6px 4px #a8a878;
 }
 .hover-shadow-electric:hover {
-    box-shadow: 0 0 12px 4px #f8d030;
+    box-shadow: 0 0 6px 4px #f8d030;
 }
 .hover-shadow-ice:hover {
-    box-shadow: 0 0 12px 4px #98d8d8;
+    box-shadow: 0 0 6px 4px #98d8d8;
 }
 .hover-shadow-psychic:hover {
-    box-shadow: 0 0 12px 4px #f85888;
+    box-shadow: 0 0 6px 4px #f85888;
 }
 .hover-shadow-dragon:hover {
-    box-shadow: 0 0 12px 4px #7038f8;
+    box-shadow: 0 0 6px 4px #7038f8;
 }
 .hover-shadow-dark:hover {
-    box-shadow: 0 0 12px 4px #705848;
+    box-shadow: 0 0 6px 4px #705848;
 }
 .hover-shadow-fairy:hover {
-    box-shadow: 0 0 12px 4px #ee99ac;
+    box-shadow: 0 0 6px 4px #ee99ac;
 }
 .hover-shadow-normal:hover {
-    box-shadow: 0 0 12px 4px #a8a878;
+    box-shadow: 0 0 6px 4px #a8a878;
 }
 .type-grass {
     background-color: #78c850;
     border: 2px solid #5ea63e;
-    color: #fff;
+    color: black;
 }
 /* Button-Farbe + Rahmen + Textfarbe je nach Typ */
 .type-fire {
     background-color: #f08030;
     border: 2px solid #d2691e;
-    color: #fff;
+    color: black;
 }
 
 .type-water {
     background-color: #6890f0;
     border: 2px solid #4364d0;
-    color: #fff;
+    color: black;
 }
 
 .type-electric {
     background-color: #f8d030;
     border: 2px solid #e6be00;
-    color: #fff;
+    color: black;
 }
 
 .type-ice {
     background-color: #98d8d8;
     border: 2px solid #78c8c8;
-    color: #fff;
+    color: black;
 }
 
 .type-fighting {
     background-color: #c03028;
     border: 2px solid #a02020;
-    color: #fff;
+    color: black;
 }
 
 .type-poison {
     background-color: #a040a0;
     border: 2px solid #803080;
-    color: #fff;
+    color: black;
 }
 
 .type-ground {
     background-color: #e0c068;
     border: 2px solid #c0a050;
-    color: #fff;
+    color: black;
 }
 
 .type-flying {
     background-color: #a890f0;
     border: 2px solid #8675d8;
-    color: #fff;
+    color: black;
 }
 
 .type-psychic {
     background-color: #f85888;
     border: 2px solid #d04070;
-    color: #fff;
+    color: black;
 }
 
 .type-bug {
     background-color: #a8b820;
     border: 2px solid #889810;
-    color: #fff;
+    color: black;
 }
 
 .type-rock {
     background-color: #b8a038;
     border: 2px solid #9c8a2e;
-    color: #fff;
+    color: black;
 }
 
 .type-ghost {
     background-color: #705898;
     border: 2px solid #5a477a;
-    color: #fff;
+    color: black;
 }
 
 .type-dragon {
     background-color: #7038f8;
     border: 2px solid #5826d8;
-    color: #fff;
+    color: black;
 }
 
 .type-dark {
     background-color: #705848;
     border: 2px solid #5a4637;
-    color: #fff;
+    color: black;
 }
 
 .type-steel {
     background-color: #b8b8d0;
     border: 2px solid #9696b0;
-    color: #fff;
+    color: black;
 }
 
 .type-fairy {
     background-color: #ee99ac;
     border: 2px solid #dd7f95;
-    color: #fff;
+    color: black;
 }
 
 .type-normal {
     background-color: #a8a878;
     border: 2px solid #8e8e60;
-    color: #fff;
+    color: black;
 }

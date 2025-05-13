@@ -155,33 +155,56 @@ function handleStatsTab(pokemon) {
 }
 //#endregion
 //#region EvoChain-Tab
+
 async function handleEvoTab(pokemon) {
+    const { stage1, stage2, stage3 } = await getEvoChainData(pokemon);
+
+    const stage1Data = await getPokemonDataByName(stage1);
+    const stage1Image = stage1Data.sprites.other['official-artwork'].front_default;
+
+    let stage2Image = "";
+    let stage3Image = "";
+
+    if (stage2) {
+        const stage2Data = await getPokemonDataByName(stage2);
+        stage2Image = stage2Data.sprites.other['official-artwork'].front_default;
+    }
+
+    if (stage3) {
+        const stage3Data = await getPokemonDataByName(stage3);
+        stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
+    }
+
+    if (!stage2 && !stage3) {
+        const evoHTML = renderEvoTab1(stage1, stage1Image);
+        document.getElementById('tab-content-areas').innerHTML = evoHTML;
+    } else if (stage2 && !stage3) {
+        const evoHTML = renderEvoTab2(stage1, stage1Image, stage2, stage2Image);
+        document.getElementById('tab-content-areas').innerHTML = evoHTML;
+    } else if (stage2 && stage3) {
+        const evoHTML = renderEvoTab3(stage1, stage1Image, stage2, stage2Image, stage3, stage3Image);
+        document.getElementById('tab-content-areas').innerHTML = evoHTML;
+    }
+}
+//#endregion
+//#region Get-Evochain-Data-handleEvoTab
+async function getEvoChainData(pokemon) {
     const speciesResponse = await fetch(pokemon.species.url);
     const speciesData = await speciesResponse.json();
 
     const evoChainUrl = speciesData.evolution_chain.url;
     const evoChainResponse = await fetch(evoChainUrl);
     const evoChainData = await evoChainResponse.json();
-
     const stage1 = evoChainData.chain?.species?.name;
     const stage2 = evoChainData.chain?.evolves_to?.[0]?.species?.name;
     const stage3 = evoChainData.chain?.evolves_to?.[0]?.evolves_to?.[0]?.species?.name;
 
-    const stage1Data = await getPokemonDataByName(stage1);
-    const stage1Image = stage1Data.sprites.other['official-artwork'].front_default;
-
-    const stage2Data = await getPokemonDataByName(stage2);
-    const stage2Image = stage2Data.sprites.other['official-artwork'].front_default;
-
-    const stage3Data = await getPokemonDataByName(stage3);
-    const stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
+    return { stage1, stage2, stage3 }
 
 
-    const evoHTML = renderEvoTab(stage1, stage1Image, stage2, stage2Image, stage3, stage3Image)
-    document.getElementById('tab-content-areas').innerHTML = evoHTML;
 }
 //#endregion
-//#region Pokemon-Data-ByName
+//#region Get-Pokemon-ByName
 async function getPokemonDataByName(name) {
     let data = allPokemons.find(p => p.name === name);
     if (!data) {

@@ -96,25 +96,46 @@ function renderStatsTab(name, value) {
     </div>`;
 }
 //#endregion
-//#region EvoChain-Tab_Template
-function renderEvoTab(stage1Name, stage1Img, stage2Name, stage2Img, stage3Name, stage3Img) {
+
+function renderEvoTab1(name1, img1) {
     return `
     <div class="evo-chain-wrapper">
         <div class="evo-stage">
-            <img src="${stage1Img}" alt="${stage1Name}" />
-            <span>${stage1Name}</span>
+            <img src="${img1}" alt="${name1}" />
+            <span>${name1}</span>
         </div>
-        <span class="arrow">→</span>
-        <div class="evo-stage">
-            <img src="${stage2Img}" alt="${stage2Name}" />
-            <span>${stage2Name}</span>
-        </div>
-        <span class="arrow">→</span>
-        <div class="evo-stage">
-            <img src="${stage3Img}" alt="${stage3Name}" />
-            <span>${stage3Name}</span>
-        </div>
-    </div>
-    `;
+    </div>`;
 }
-//#endregion
+function renderEvoTab2(name1, img1, name2, img2) {
+    return `
+    <div class="evo-chain-wrapper">
+        <div class="evo-stage">
+            <img src="${img1}" alt="${name1}" />
+            <span>${name1}</span>
+        </div>
+        <span class="arrow">→</span>
+        <div class="evo-stage">
+            <img src="${img2}" alt="${name2}" />
+            <span>${name2}</span>
+        </div>
+    </div>`;
+}
+function renderEvoTab3(name1, img1, name2, img2, name3, img3) {
+    return `
+    <div class="evo-chain-wrapper">
+        <div class="evo-stage">
+            <img src="${img1}" alt="${name1}" />
+            <span>${name1}</span>
+        </div>
+        <span class="arrow">→</span>
+        <div class="evo-stage">
+            <img src="${img2}" alt="${name2}" />
+            <span>${name2}</span>
+        </div>
+        <span class="arrow">→</span>
+        <div class="evo-stage">
+            <img src="${img3}" alt="${name3}" />
+            <span>${name3}</span>
+        </div>
+    </div>`;
+}

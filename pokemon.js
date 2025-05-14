@@ -173,19 +173,23 @@ function stopClick(event) {
 
 //#region Overlay-Show-Previous-OR-Next-Pokemon
 function showNextPokemon() {
-    if (currentPokemonIndex < allPokemons.length - 1) {
+    if (currentPokemonIndex >= allPokemons.length - 1) {
+        currentPokemonIndex = 0;
+    } else {
         currentPokemonIndex++;
-        const nextPokemon = allPokemons[currentPokemonIndex];
-        openOverlay(nextPokemon.id);
     }
+    const nextPokemon = allPokemons[currentPokemonIndex];
+    openOverlay(nextPokemon.id);
 }
 
 function showPreviousPokemon() {
-    if (currentPokemonIndex > 0) {
+    if (currentPokemonIndex <= 0) {
+        currentPokemonIndex = allPokemons.length - 1;
+    } else {
         currentPokemonIndex--;
-        const prevPokemon = allPokemons[currentPokemonIndex];
-        openOverlay(prevPokemon.id);
     }
+    const prevPokemon = allPokemons[currentPokemonIndex];
+    openOverlay(prevPokemon.id);
 }
 //#endregion
 

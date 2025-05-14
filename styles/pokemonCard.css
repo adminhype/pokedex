@@ -31,7 +31,7 @@
     .pokemon-name {
         font-size: 1.2rem;
         margin: 0.2rem 0;
-        color: black;
+        color: #0d0106;
     }
     /* Bild des Pokémon mit runden Ecken */
     .pokemon-img {
@@ -55,6 +55,7 @@
             transition: all 0.2s ease;
             width: 100%;
             margin: 6px 12px;
+            color: #0d0106;
 
             &:hover {
                 transform: scale(1.05);

@@ -158,6 +158,7 @@ function showOverlayContent(id, name, image, type1, type2) {
 
     document.getElementById('overlay').classList.remove('d-none');
     document.body.classList.add('no-scroll')
+
     handleMainTab(pokemon);
 }
 //#endregion
@@ -247,21 +248,31 @@ async function handleEvoTab(pokemon) {
 
 //#region Evo-images
 async function getEvolutionImages(stage1, stage2, stage3) {
-    const stage1Data = await getPokemonDataByName(stage1);
-    const stage1Image = stage1Data.sprites.other['official-artwork'].front_default;
 
-    let stage2Image = '';
-    let stage3Image = '';
 
-    if (stage2) {
-        const stage2Data = await getPokemonDataByName(stage2);
-        stage2Image = stage2Data.sprites.other['official-artwork'].front_default;
-    }
-    if (stage3) {
-        const stage3Data = await getPokemonDataByName(stage3);
-        stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
-    }
-    return { stage1Image, stage2Image, stage3Image };
+}
+//#endregion
+
+//#region Get-Imagge-From-Name
+async function getImageFromName(stage1) {
+    const data = await getPokemonDataByName(stage1);
+    return data.sprites.other['official-artwork'].front_default;
+}
+//#endregion
+
+//#region Get-Image-If-True
+async function getImageIfExists(name) {
+    if (!name) return '';
+    return await getImageFromName(name);
+}
+//#endregion
+
+//#region Get-Evoultion-Images
+async function getEvolutionImages(stage1, stage2, stage3) {
+    const stage1Image = await getImageIfExists(stage1);
+    const stage2Image = await getImageIfExists(stage2);
+    const stage3Image = await getImageIfExists(stage3);
+    return { stage1Image, stage2Image, stage3Image }
 }
 //#endregion
 

@@ -114,108 +114,108 @@
 }
 .type-grass {
     background-color: #78c850;
-    border: 2px solid #5ea63e;
+    border: 2px solid #fff;
     color: black;
 }
 /* Button-Farbe + Rahmen + Textfarbe je nach Typ */
 .type-fire {
     background-color: #f08030;
-    border: 2px solid #d2691e;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-water {
     background-color: #6890f0;
-    border: 2px solid #4364d0;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-electric {
     background-color: #f8d030;
-    border: 2px solid #e6be00;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-ice {
     background-color: #98d8d8;
-    border: 2px solid #78c8c8;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-fighting {
     background-color: #c03028;
-    border: 2px solid #a02020;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-poison {
     background-color: #a040a0;
-    border: 2px solid #803080;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-ground {
     background-color: #e0c068;
-    border: 2px solid #c0a050;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-flying {
     background-color: #a890f0;
-    border: 2px solid #8675d8;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-psychic {
     background-color: #f85888;
-    border: 2px solid #d04070;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-bug {
     background-color: #a8b820;
-    border: 2px solid #889810;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-rock {
     background-color: #b8a038;
-    border: 2px solid #9c8a2e;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-ghost {
     background-color: #705898;
-    border: 2px solid #5a477a;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-dragon {
     background-color: #7038f8;
-    border: 2px solid #5826d8;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-dark {
     background-color: #705848;
-    border: 2px solid #5a4637;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-steel {
     background-color: #b8b8d0;
-    border: 2px solid #9696b0;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-fairy {
     background-color: #ee99ac;
-    border: 2px solid #dd7f95;
+    border: 2px solid #fff;
     color: black;
 }
 
 .type-normal {
     background-color: #a8a878;
-    border: 2px solid #8e8e60;
+    border: 2px solid #fff;
     color: black;
 }

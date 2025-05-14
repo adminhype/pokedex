@@ -1,4 +1,5 @@
 // https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
+
 //#region API-Variable / Array
 let offset = 0;
 let currentPokemonIndex = 0;
@@ -32,6 +33,7 @@ async function loadPokemons() {
     renderLoadButton();
 }
 //#endregion
+
 //#region Fetch-Pokemon-Data
 async function fetchPokemonData(offset) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
@@ -54,8 +56,9 @@ async function renderSinglePokemon(url) {
     allPokemons.push(data);
     const { id, name, image, type1, type2 } = pokemonData(data);
     pokemonCardToGrid(id, name, image, type1, type2);
-    //#endregion
 }
+//#endregion
+
 //#region Pokemon-Data
 function pokemonData(data) {
     const id = data.id;
@@ -66,6 +69,7 @@ function pokemonData(data) {
     return { id, name, image, type1, type2 }
 }
 //#endregion
+
 //#region Render-Pokemon-To-Grid
 function pokemonCardToGrid(id, name, image, type1, type2) {
     const bgClass = type1;
@@ -73,6 +77,28 @@ function pokemonCardToGrid(id, name, image, type1, type2) {
     const cardHTML = renderPokemonCards(id, name, image, bgClass, buttonsHTML);
     document.getElementById('content').innerHTML += cardHTML;
 }
+//#endregion
+
+//#region Search-Pokemon
+function searchPokemon(searchPokemonTerm) {
+    // inhalt leeren
+    document.getElementById('content').innerHTML = "";
+    // pokemons filtern
+    const filterPokemon = allPokemons.filter(p => p.name.toLowerCase().includes(searchPokemonTerm.toLowerCase()));
+    // gefiltere pokemons rendern
+    filterPokemon.forEach(p => {
+        const { id, name, image, type1, type2 } = pokemonData(p);
+        pokemonCardToGrid(id, name, image, type1, type2);
+    });
+
+}
+//#endregion
+
+//#region Search-Term
+document.getElementById('inputField').addEventListener('input', function (e) {
+    const searchPokemonTerm = e.target.value;
+    searchPokemon(searchPokemonTerm);
+});
 //#endregion
 
 //#region Load-Button

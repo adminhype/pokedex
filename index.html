@@ -16,9 +16,9 @@
         />
         <title>Pokedex</title>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="/styles/assets.css" />
-        <link rel="stylesheet" href="/styles/standard.css" />
-        <link rel="stylesheet" href="styles/pokemonCard.css" />
+        <link rel="stylesheet" href="./styles/assets.css" />
+        <link rel="stylesheet" href="./styles/standard.css" />
+        <link rel="stylesheet" href="./styles/pokemonCard.css" />
         <link rel="stylesheet" href="./styles/pokemonColors.css" />
         <link rel="stylesheet" href="./styles/pokemonCardOverlay.css" />
     </head>
@@ -31,10 +31,11 @@
                 </a>
                 <p>Pokedex</p>
                 <form onsubmit="event.preventDefault();">
-                    <label for="inputField" class="visually-hidden"></label>
+                    <label for="inputField"></label>
                     <input
                         type="text"
                         id="inputField"
+                        class="input-field"
                         placeholder="suchen.."
                         required
                         minlength="3"

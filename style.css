@@ -76,3 +76,7 @@ footer {
     position: relative;
     cursor: default;
 }
+.input-field {
+    background-color: black;
+    color: white;
+}

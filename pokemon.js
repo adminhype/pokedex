@@ -31,6 +31,7 @@ async function loadPokemons() {
 
     removeLoadingOverlay();
     renderLoadButton();
+
 }
 //#endregion
 
@@ -150,12 +151,14 @@ function pokemonOverlayData(pokemon) {
 
 //#region Overlay-Render
 function showOverlayContent(id, name, image, type1, type2) {
+    const pokemon = allPokemons.find(p => p.id === id)
     const buttonHTML = createTypeButtons(type1, type2)
     const overlayHTML = renderOverlayCard(id, name, image, type1, buttonHTML);
     document.getElementById('overlay-content').innerHTML = overlayHTML;
 
     document.getElementById('overlay').classList.remove('d-none');
     document.body.classList.add('no-scroll')
+    handleMainTab(pokemon);
 }
 //#endregion
 
@@ -259,7 +262,6 @@ async function getEvolutionImages(stage1, stage2, stage3) {
         stage3Image = stage3Data.sprites.other['official-artwork'].front_default;
     }
     return { stage1Image, stage2Image, stage3Image };
-
 }
 //#endregion
 

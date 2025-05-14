@@ -74,7 +74,6 @@
 }
 /* Umgibt das Pokémon-Bild – für zentrierte Darstellung */
 .pokemon-img-wrapper {
-    position: relative;
     background-color: white;
     display: flex;
     justify-content: center;

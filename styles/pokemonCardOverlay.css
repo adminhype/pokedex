@@ -7,7 +7,6 @@
     text-align: center;
     /* Wrapper für das Bild der Overlay-Karte */
     .pokemon-img-wrapper-overlay {
-        position: relative;
         background-color: white;
         display: flex;
         justify-content: center;
